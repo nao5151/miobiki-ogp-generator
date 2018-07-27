@@ -4,6 +4,8 @@ import './App.css';
 import Guide from './components/Guide'
 import TitlePreview from './components/TitlePreview'
 
+import font from './font.base64'
+
 import Downloader from './Downloader'
 import template from './template.png'
 
@@ -41,6 +43,16 @@ class App extends Component {
             <svg viewBox="0 0 2000 775" width="2000" height="775"
               ref={this.svg}
             >
+              <defs>
+                <style>
+                {
+                  `@font-face {
+                    font-family: "Charlemagne";
+                    src: url(${font}) format(truetype);
+                  }`
+                }
+                </style>
+              </defs>
               <image
                 xlinkHref={template}
                 x="0" y="0"
