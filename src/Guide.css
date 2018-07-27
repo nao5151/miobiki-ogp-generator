@@ -1,0 +1,51 @@
+:root {
+  --guideline-color: #000;
+}
+
+.guide {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.guide--visible {
+  visibility: visible;
+}
+
+.guide__line {
+  position: absolute;
+  pointer-events: none;
+}
+
+.guide__line--x {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--guideline-color);
+  transform: translate3d(0, -50%, 0);
+}
+
+.guide__line--y {
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: var(--guideline-color);
+  transform: translate3d(-50%, 0, 0);
+}
+
+.guide__line--rect {
+  width: 60%;
+  height: 50%;
+  border: 1px solid var(--guideline-color);
+}

@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Charlemagne";
+  src: url("Charlemagne-Bold.ttf") format('truetype');
+}
+
+main {
+  padding: 1em;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  margin: 0 auto;
+}
+th {
+  text-align: right;
+}
+th,td {
+  padding: .5em .25em;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.userselect-none {
+  user-select: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.preview {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
