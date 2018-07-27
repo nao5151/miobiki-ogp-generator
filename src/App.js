@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Guide from './Guide'
+import Guide from './components/Guide'
+import TitlePreview from './components/TitlePreview'
 
 import Downloader from './Downloader'
 import template from './template.png'
@@ -12,9 +13,7 @@ class App extends Component {
     this.state = {
       title: 'miobiki\nogp generator',
       fontSize: 120,
-      x: 1000,
-      y: 254,
-      visibleGuide: false,
+      visibleGuide: true,
     }
     this.svg = React.createRef()
     this.bgImage = new Image()
@@ -29,7 +28,7 @@ class App extends Component {
   }
 
   render() {
-    const { title, x, y, fontSize, visibleGuide } = this.state
+    const { title, fontSize, visibleGuide } = this.state
 
     return (
       <div className="App">
@@ -46,26 +45,16 @@ class App extends Component {
                 xlinkHref={template}
                 x="0" y="0"
                 width="2000" height="775" />
-              <g transform={`translate(${x}, ${y})`} style={{textAnchor: 'middle'}}>
-              {title.split('\n').map((text, i) => (
-                <text
-                  key={i}
-                  fontFamily="Charlemagne"
-                  x="0"
-                  y={Number(fontSize) * (i + 1)}
-                  fontSize={fontSize}
-                  fill="#fff"
-                >
-                  {text}
-                </text>
-              ))}
-              </g>
+              <TitlePreview
+                title={title}
+                fontSize={fontSize}
+              />
             </svg>
           </div>
           <table>
             <tbody>
               <tr>
-                <td colSpan="2"><label className="pointer"><span className="bold userselect-none">guide:</span> <input type="checkbox" value={visibleGuide} onChange={(e) => {this.setState({ visibleGuide: !visibleGuide })}}/></label></td>
+                <td colSpan="2"><label className="pointer"><span className="bold userselect-none">guide:</span> <input type="checkbox" defaultChecked={visibleGuide} onChange={(e) => {this.setState({ visibleGuide: !visibleGuide })}}/></label></td>
               </tr>
               <tr>
                 <th>title: </th>
@@ -73,15 +62,7 @@ class App extends Component {
               </tr>
               <tr>
                 <th>font-size: </th>
-                <td><input type="number" value={fontSize} onChange={(e) => {this.setState({ fontSize: e.target.value })}} /></td>
-              </tr>
-              <tr>
-                <th>x: </th>
-                <td><input type="number" value={x} onChange={(e) => {this.setState({ x: e.target.value })}} /></td>
-              </tr>
-              <tr>
-                <th>y: </th>
-                <td><input type="number" value={y} onChange={(e) => {this.setState({ y: e.target.value })}} /></td>
+                <td><input type="number" value={fontSize} onChange={(e) => {this.setState({ fontSize: Number(e.target.value) })}} /></td>
               </tr>
               <tr>
                 <td colSpan="2"><button onClick={this._download.bind(this)}>download</button></td>
